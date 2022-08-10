@@ -1,0 +1,3 @@
+dotnet add package microsoft.EntityFrameworkCore.SqlServer
+dotnet add package microsoft.EntityFrameworkCore.design
+dotnet add package automapper.extensions.microsoft.dependencyinjection
