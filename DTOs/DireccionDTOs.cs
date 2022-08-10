@@ -1,8 +1,11 @@
+
 namespace prueba.DTOs
 {
-    public class DireccionesDTOs
+    public class DireccionDTOs
     {
-        public int ID {get;set;}
+        public int Id {get;set;}
+
+        
          public string Ubicacion {get;set;}
         
     }

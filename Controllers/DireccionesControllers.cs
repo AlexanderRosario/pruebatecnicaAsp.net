@@ -24,18 +24,18 @@ namespace prueba.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<List<DireccionesDTOs>>> Get(int idcliente)
+        public async Task<ActionResult<List<DireccionDTOs>>> Get(int idcliente)
         {
             var direccion = await dbcontext.Direcciones.Where(direcciondb => direcciondb.Id_Cliente == idcliente).ToListAsync();
             
-            return mapper.Map<List<DireccionesDTOs>>(direccion);
+            return mapper.Map<List<DireccionDTOs>>(direccion);
         }
 
 
 
 
         [HttpPost]
-        public async Task<ActionResult> Post(int idcliente,DireccionesDTOs direccionesdtos)
+        public async Task<ActionResult> Post(int idcliente,CrearDireccionDTOs direccionesdtos)
         {
             var existecliente = await dbcontext.Clientes.AnyAsync(clientedb => clientedb.Id == idcliente );
             if (!existecliente)
@@ -48,7 +48,8 @@ namespace prueba.Controllers
             await dbcontext.SaveChangesAsync();
             return Ok();
 
-               
+
+
         }
 
         

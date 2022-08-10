@@ -4,7 +4,7 @@ using prueba.Models;
 
 namespace prueba.DTOs
 {
-    public class crearClienteDtos
+    public class CrearClienteDtos
     {
 
         [Required]

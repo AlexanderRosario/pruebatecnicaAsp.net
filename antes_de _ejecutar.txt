@@ -1,0 +1,1 @@
+La prueba fue realizada con Visual Studio Code por lo que no se genera el el .sln
