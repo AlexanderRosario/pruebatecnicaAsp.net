@@ -7,6 +7,8 @@ namespace prueba.DTOs
     public class ClienteDtos
     {
         
+        public int Id {get;set;}
+
         [Required]
         [StringLength(maximumLength:100,MinimumLength =3)]
         public string Nombre {get;set;}
