@@ -4,11 +4,13 @@ using prueba.Models;
 
 namespace Prueba.Utilidades
 {
-    public class AutoMapperClient : Profile
+    public class AutoMapperProfiles: Profile
     {
-        public AutoMapperClient()
+        public AutoMapperProfiles()
         {
             CreateMap<ClienteDtos,Cliente>();
+            CreateMap<DireccionesDTOs,Direccion>();
+            CreateMap<Cliente,ClienteDtos>();
         }
         
     }

@@ -1,12 +1,12 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
-
+using prueba.Models;
 
 namespace prueba.DTOs
 {
-    public class ClienteDtos
+    public class crearClienteDtos
     {
-        
+
         [Required]
         [StringLength(maximumLength:100,MinimumLength =3)]
         public string Nombre {get;set;}
@@ -21,6 +21,6 @@ namespace prueba.DTOs
         [Required]
         public string telefono {get;set;}
         
-        
     }
+    
 }

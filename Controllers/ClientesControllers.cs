@@ -27,7 +27,13 @@ namespace prueba.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ClienteDtos>>> Get( )
         {
+            // var existecliente = await dbcontext.Clientes.AnyAsync(x => x.Nombre == clientedtos.Nombre);
+            // if (existecliente)
+            // {
+            //     return BadRequest($"Ya existe un Cliente con el nombre {clientedtos.Nombre}");
+            // }
             var cliente = await dbcontext.Clientes.ToListAsync();
+            
             var clientedtos = mapper.Map<List<ClienteDtos>>(cliente);
             return clientedtos;
         }
@@ -41,9 +47,6 @@ namespace prueba.Controllers
         [HttpPost]
         public async Task<ActionResult> Post(ClienteDtos clientedtos)
         {
-            // Console.WriteLine(clientedtos);
-
-            
             var existecliente = await dbcontext.Clientes.AnyAsync(x => x.Nombre == clientedtos.Nombre);
             if (existecliente)
             {
