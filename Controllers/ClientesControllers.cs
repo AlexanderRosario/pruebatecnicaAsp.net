@@ -6,28 +6,44 @@ using prueba.DTOs;
 
 namespace prueba.Controllers
 {
+
+
+
     [ApiController]
     [Route("api/cliente")]
     public class ClientesController : ControllerBase
     {
         private readonly ApplicationDbContext dbcontext;
-        private readonly Mapper mapper;
+        private readonly IMapper mapper;
 
-        public ClientesController(ApplicationDbContext dbcontext, Mapper mapper)
+        public ClientesController(ApplicationDbContext dbcontext, IMapper mapper)
         {
             this.dbcontext = dbcontext;
             this.mapper = mapper;
         }
+
+
+
         [HttpGet]
-        public async Task<List<Cliente>> Get( )
+        public async Task<ActionResult<List<ClienteDtos>>> Get( )
         {
-            return await dbcontext.Clientes.ToListAsync();
+            var cliente = await dbcontext.Clientes.ToListAsync();
+            var clientedtos = mapper.Map<List<ClienteDtos>>(cliente);
+            return clientedtos;
         }
+
+
+
+
+
 
 
         [HttpPost]
         public async Task<ActionResult> Post(ClienteDtos clientedtos)
         {
+            // Console.WriteLine(clientedtos);
+
+            
             var existecliente = await dbcontext.Clientes.AnyAsync(x => x.Nombre == clientedtos.Nombre);
             if (existecliente)
             {

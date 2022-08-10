@@ -13,7 +13,12 @@ namespace prueba
         {
             Configuration = configuration;
             
-        }public void ConfigureServices(IServiceCollection services)
+        }
+        
+        
+        
+        
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers(opciones =>{}).AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
@@ -21,24 +26,24 @@ namespace prueba
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("defaultConnection")));
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIAutores", Version = "v1" });
-            });
+            services.AddControllers();
 
-            services.AddAutoMapper(typeof(Startup));
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
+
+            services.AddAutoMapper(typeof(Startup).Assembly);
         }
 
 
 
  
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILogger<Startup> logger)//
         {
            if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                // app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIAutores v1"));
+                app.UseSwaggerUI();
             }
 
             app.UseHttpsRedirection();

@@ -25,7 +25,7 @@ namespace prueba.Models
 
 
         [DefaultValue(true)]
-        public bool Estado {get;set;} = true;
+        public bool Estado {get;set;} = true; 
 
 
         

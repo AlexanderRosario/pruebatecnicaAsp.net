@@ -7,6 +7,8 @@ using prueba.Models;
 
 namespace prueba.Controllers
 {
+
+    
     [ApiController]
     [Route("api/clientes/{idcliente}/Direccion")]
     public  class DireccionesControllers : ControllerBase
@@ -25,6 +27,7 @@ namespace prueba.Controllers
         public async Task<ActionResult<List<DireccionesDTOs>>> Get(int idcliente)
         {
             var direccion = await dbcontext.Direcciones.Where(direcciondb => direcciondb.Id_Cliente == idcliente).ToListAsync();
+            
             return mapper.Map<List<DireccionesDTOs>>(direccion);
         }
 

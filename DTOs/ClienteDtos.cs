@@ -1,12 +1,12 @@
-
-
-
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using prueba.Models;
 
 namespace prueba.DTOs
 {
     public class ClienteDtos
     {
+
         [Required]
         [StringLength(maximumLength:100,MinimumLength =3)]
         public string Nombre {get;set;}
@@ -18,9 +18,11 @@ namespace prueba.DTOs
         [DataType(DataType.Date)]
         public DateTime Fecha_de_Nacimiento {get;set;}
 
-        
         [Required]
         public string telefono {get;set;}
+
+        [DefaultValue(true)]
+        public bool Estado {get;set;} = true;
 
         
     }
