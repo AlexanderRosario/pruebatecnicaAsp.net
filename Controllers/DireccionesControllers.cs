@@ -11,11 +11,11 @@ namespace prueba.Controllers
     
     [ApiController]
     [Route("api/clientes/{idcliente}/Direccion")]
-    public  class DireccionesControllers : ControllerBase
+    public  class DireccionesController : ControllerBase
     {
         private readonly ApplicationDbContext dbcontext;
         private readonly IMapper mapper ;
-        public DireccionesControllers(ApplicationDbContext dbContext, IMapper mapper) 
+        public DireccionesController(ApplicationDbContext dbContext, IMapper mapper) 
         {
             this.dbcontext = dbContext;
             this.mapper = mapper;
