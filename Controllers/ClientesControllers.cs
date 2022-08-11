@@ -32,14 +32,11 @@ namespace prueba.Controllers
             // {
             //     return BadRequest($"Ya existe un Cliente con el nombre {clientedtos.Nombre}");
             // }
-            var cliente = await dbcontext.Clientes.ToListAsync();
+            var cliente = await dbcontext.Clientes.Include(clientedb => clientedb.Ubicaccion).ToListAsync();
             
             var clientedtos = mapper.Map<List<ClienteDtos>>(cliente);
             return clientedtos;
         }
-
-
-
 
 
 

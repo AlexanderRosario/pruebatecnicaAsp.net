@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace prueba.Migrations
 {
-    public partial class Clientes : Migration
+    public partial class Cliente_direccion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,36 +27,36 @@ namespace prueba.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Direciones",
+                name: "Direcciones",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Ubicacion = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
-                    Id_Cliente = table.Column<int>(type: "int", nullable: false),
-                    ClienteId = table.Column<int>(type: "int", nullable: true),
+                    ClienteId = table.Column<int>(type: "int", nullable: false),
                     Estado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Direciones", x => x.Id);
+                    table.PrimaryKey("PK_Direcciones", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Direciones_Clientes_ClienteId",
+                        name: "FK_Direcciones_Clientes_ClienteId",
                         column: x => x.ClienteId,
                         principalTable: "Clientes",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Direciones_ClienteId",
-                table: "Direciones",
+                name: "IX_Direcciones_ClienteId",
+                table: "Direcciones",
                 column: "ClienteId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Direciones");
+                name: "Direcciones");
 
             migrationBuilder.DropTable(
                 name: "Clientes");

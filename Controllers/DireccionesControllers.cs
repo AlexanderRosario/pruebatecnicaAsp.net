@@ -26,9 +26,9 @@ namespace prueba.Controllers
         [HttpGet]
         public async Task<ActionResult<List<DireccionDTOs>>> Get(int idcliente)
         {
-            var direccion = await dbcontext.Direcciones.Where(direcciondb => direcciondb.Id_Cliente == idcliente).ToListAsync();
+            var direccion = await dbcontext.Direcciones.Where(direcciondb => direcciondb.ClienteId == idcliente).ToListAsync();
             
-            return mapper.Map<List<DireccionDTOs>>(direccion);
+            return  mapper.Map<List<DireccionDTOs>>(direccion);
         }
 
 
@@ -43,7 +43,7 @@ namespace prueba.Controllers
                 return NotFound();
             }
             var direccion = mapper.Map<Direccion>(direccionesdtos);
-            direccion.Id_Cliente = idcliente;
+            direccion.ClienteId= idcliente;
             dbcontext.Add(direccion);
             await dbcontext.SaveChangesAsync();
             return Ok();

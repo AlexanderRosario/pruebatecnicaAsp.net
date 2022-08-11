@@ -8,11 +8,12 @@ namespace Prueba.Utilidades
     {
         public AutoMapperProfiles()
         {
-            CreateMap<ClienteDtos,Cliente>();
+            CreateMap<CrearClienteDtos,Cliente>();
+            // CreateMap<ClienteDtos,Cliente>();
             CreateMap<Cliente,ClienteDtos>();
 
 
-            CreateMap<DireccionDTOs,Direccion>();
+            CreateMap<CrearDireccionDTOs,Direccion>();
             CreateMap<Direccion,DireccionDTOs>();
         }
         

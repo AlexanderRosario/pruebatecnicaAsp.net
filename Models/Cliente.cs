@@ -20,7 +20,7 @@ namespace prueba.Models
         public DateTime Fecha_de_Nacimiento {get;set;}
         [Required]
         public string telefono {get;set;}
-
+ 
         public List<Direccion> Ubicaccion {get;set;}
 
 

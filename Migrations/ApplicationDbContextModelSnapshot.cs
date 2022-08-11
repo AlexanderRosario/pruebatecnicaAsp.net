@@ -63,14 +63,11 @@ namespace prueba.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int?>("ClienteId")
+                    b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<bool>("Estado")
                         .HasColumnType("bit");
-
-                    b.Property<int>("Id_Cliente")
-                        .HasColumnType("int");
 
                     b.Property<string>("Ubicacion")
                         .IsRequired()
@@ -88,7 +85,9 @@ namespace prueba.Migrations
                 {
                     b.HasOne("prueba.Models.Cliente", "Cliente")
                         .WithMany("Ubicaccion")
-                        .HasForeignKey("ClienteId");
+                        .HasForeignKey("ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
                 });
